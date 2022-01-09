@@ -1,10 +1,12 @@
-version: '3.4'
+version: "3.4"
 
 services:
-  stealtracks:
-    image: stealtracks
-    build: .
-    environment:
-      NODE_ENV: production
+  api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    volumes:
+      - ./api/src:/steal-tracks/src
+      # - /usr/src/app/node_modules # Remove this if you have pure JS dependencies
     ports:
       - 8080:8080
